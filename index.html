@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Where's the Ball?</title>
+    <link rel="stylesheet" href="./src/styles.css" />
+    <link rel="icon" href="./assets/images/favicon.png" />
+    <meta charset="UTF-8" />
+  </head>
+
+  <body>
+    <article class="slide" id="instructions">
+      <h1>
+        Welcome to the "Reasoning like Sherlock" study. Enter the information
+        below:
+      </h1>
+      <div class="center">
+        <form
+          class="form"
+					name="demographics"
+					onsubmit="experiment.preStudy();return false"
+        >
+          <label for="subjectID">Subject ID:</label>
+          <input type="text" id="subjectID" name="subjectID" required minlength="2"/>
+          <label for="birthDate">Birthday:</label>
+          <input type="date" id="birthDate" name="birthday" required/>
+          <label for="term">Is child full term?</label>
+          <select id="term">
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
+          <label for="sex">What is child's sex?</label>
+          <select id="sex">
+            <option value="female">Female</option>
+            <option value="male">Male</option>
+          </select>
+          <label for="condition">Choose a Condition:</label>
+          <select id="condition">
+            <option value="inf">Inference</option>
+            <option value="noinf">No-Inference</option>
+          </select>
+          <label for="list">Choose a list:</label>
+          <select id="list">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+          <button type="button" id="showConsent">Submit</button>
+        </form>
+      </div>
+    </article>
+
+    <article class="slide" id="consent">
+      <h1>BROWN UNIVERISITY</h1>
+      <h2>CONSENT FOR RESEARCH PARTICIPATION</h2>
+      <p>
+        You and your child are invited to take part in a Brown University
+        research study. Your participation is voluntary.
+      </p>
+      <ul>
+        <li>
+          RESEARCHER: Roman Feiman, PhD, Director of Brown Language and Thought
+          Lab, sites.brown.edu/bltlab
+        </li>
+        <li>
+          PURPOSE: The study is about what children understand about language.
+          We are interested in the types of information children use when they
+          interpret sentences.
+        </li>
+        <li>
+          PROCEDURES: Your child will be presented with a set (2-4) of options
+          on your computer screen, usually among different kinds of toys. He/She
+          will be asked to choose between the options based upon criteria set by
+          the researcher (usually which choice has more, or a higher reward).
+          During the session, you and your child will be recorded via your
+          computer's webcam and microphone. Video recordings and other data you
+          enter are sent securely to our lab. Your child may also be presented
+          with English sentences one at a time and will be asked to judge
+          whether the sentence is right or appropriate for a given situation.
+          You or your child may also be asked to fill out a questionnaire
+          related to your child’s vocabulary or language(s). The goal is to
+          characterize the process of language development, not to characterize
+          individual children.
+        </li>
+        <li>
+          TIME INVOLVED: The study will take approximately 30-45 minutes of your
+          time.
+        </li>
+        <li>
+          COMPENSATION: You will receive $5 for compensation of your time. You
+          will be asked to provide your email to researchers in order to receive
+          an electronic gift certificate. You will receive your gift within a
+          week of participating. This email will only be used to send your gift
+          unless you opt-in to future communication with Brown developmental
+          labs.
+        </li>
+        <li>
+          RISKS: We have attempted to minimize the risk of yours and your
+          child's identifiable information being accessed. All information
+          pertaining to the studies (screening forms, behavioral, and video
+          data) will be identified with a unique arbitrary number. In reports,
+          you and your child will not be identified individually. Your child may
+          or may become tired of answering questions. You or your child may
+          choose to stop the procedures at any time.
+        </li>
+        <li>
+          BENEFITS: You and your child may not directly benefit from being in
+          this research study.
+        </li>
+        <li>
+          CONFIDENTIALITY: All subjects will be coded and assigned a number to
+          be used for data files. One lab computerized password protected file
+          will link that number with subject identifying and demographic
+          information. If information regarding child abuse or neglect is
+          disclosed or witnessed, it must be reported to appropriate agencies.
+          Brown University staff sometimes review studies like this one to make
+          sure they are being done safely and correctly. If a review of this
+          study takes place, your records may be examined. The reviewers will
+          protect your confidentiality.
+        </li>
+        <li>
+          VOLUNTARY: You and your child do not have to be in this study if you
+          do not want to be. Even if you decide to be in this study, you and/or
+          your child can change your mind and stop at any time.
+        </li>
+        <li>
+          CONTACT INFORMATION: If you have any questions about your
+          participation in this study, you can call Roman Feiman at (401)
+          863-6860 or email
+          <a href="mailto:Roman_Feiman@Brown.edu">Roman_Feiman@Brown.edu</a>
+        </li>
+        <li>
+          YOUR RIGHTS: If you have questions about your rights as a research
+          participant, you can contact Brown University&rsquo;s Human Research
+          Protection Program at 401-863-3050 or email them at
+          <a href="mailto:IRB@Brown.edu">IRB@Brown.edu</a>.
+        </li>
+        <li>
+          CONSENT TO PARTICIPATE: By clicking the link below, you agree that you
+          have read and understand the consent document and that you are this
+          child's parent or legal guardian and both agree to participate in this
+          study.
+        </li>
+      </ul>
+      <button id="consented" onClick="experiment.audioCheck()">
+        I Consent, Begin
+      </button>
+    </article>
+
+    <article class="slide" id="audioCheck">
+      <h2>
+        Let's make sure you can hear our computer audio! Please click play on
+        the video.
+      </h2>
+      <video
+        controls
+        id="audioVideo"
+        src="./assets/videos/audio-video-test.mp4"
+      ></video>
+      <button id="startWarmup">
+        I can hear it
+      </button>
+    </article>
+
+    <article class="slide" id="warmup">
+      <p id="warmupInstructions">
+        When the boxes start glowing, ask your child to find the ball! (<i
+          >"Can you find the ball? Point to the box!"</i
+        >) Click on the box after they reach for it.
+      </p>
+    </article>
+
+    <article class="slide" id="videoBox"></article>
+
+    <article class="slide" id="filler">
+      <h2>
+        Great Job! Let's do some more!
+      </h2>
+      <button id="nextTrial">Let's Start</button>
+		</article>
+		
+		<article class="slide" id="finished">
+			<img src="./assets/images/thanks.jpg"></img>
+			<h2>Thank you so much for completing the experiment!</h2>
+			<p>Click the button below to sign up for the Brown developmental labs' contact list!</p>
+			<button id="signUp">Sign Up</button>
+		</article>
+
+    <script src="src/index.js" defer></script>
+  </body>
+</html>
