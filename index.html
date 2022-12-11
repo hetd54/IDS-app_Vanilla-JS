@@ -16,8 +16,8 @@
       <div class="center">
         <form
           class="form"
-					name="demographics"
-					onsubmit="experiment.preStudy();return false"
+	  name="demographics"
+	  onsubmit="experiment.preStudy();return false"
         >
           <label for="subjectID">Subject ID:</label>
           <input type="text" id="subjectID" name="subjectID" required minlength="2"/>
@@ -142,7 +142,7 @@
           study.
         </li>
       </ul>
-      <button id="consented" onClick="experiment.audioCheck()">
+      <button id="consented">
         I Consent, Begin
       </button>
     </article>
@@ -187,5 +187,6 @@
 		</article>
 
     <script type="module" src="src/index.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   </body>
 </html>
